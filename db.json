@@ -3,25 +3,25 @@
     {
       "id": 1,
       "name": "Spider-man Gauntlet",
-      "image": "https://images-na.ssl-images-amazon.com/images/I/41NqvNnvYrL._AC_US40_.jpg",
-      "likes": 7
+      "image": "https://cdn.shopify.com/s/files/1/2287/2299/products/figure_38ad2b2f-8f54-474d-acc7-880d5da0d7d7_900x.jpg?v=1576216094",
+      "likes": 0
     },
     {
       "id": 3,
       "name": "Charmander",
       "image": "https://bbts1.azureedge.net/images/p/full/2019/04/80edb490-1750-44e8-b515-daf1f8d12e40.jpg",
-      "likes": 9
+      "likes": 0
     },
     {
       "id": 4,
       "name": "Deadpool",
       "image": "https://images-na.ssl-images-amazon.com/images/I/61W6YssxEIL._AC_SX679_.jpg",
-      "likes": 4
+      "likes": 0
     },
     {
       "name": "hankey",
       "image": "https://images-na.ssl-images-amazon.com/images/I/61L7ve7mr4L._AC_SX679_.jpg",
-      "likes": 9,
+      "likes": 0,
       "id": 6
     },
     {

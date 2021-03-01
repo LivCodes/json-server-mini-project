@@ -65,7 +65,7 @@ function addToCollection(e) {
         likeFeat(div);
         document.querySelector('#collection').append(div);
        } else {
-           console.log("toy already exists!")
+           alert("POP already exists!")
        }
    })
    

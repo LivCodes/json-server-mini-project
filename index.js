@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(e) {
     fetchStart();
-
+    let form = document.querySelector(".add-form")
+    form.addEventListener("submit", addToCollection)
 
 });
 
@@ -17,5 +18,25 @@ function fetchStart() {
 
             document.querySelector('#collection').append(div);
         })
+    })
+}
+
+function addToCollection(e) {
+    e.preventDefault()
+    // user inputs name and url 
+    // submit event adds new pop to "pops" 
+   let name = document.getElementById("name-input").value
+   let url = document.getElementById("img-url-input").value
+    let options = {
+        method: "POST",
+        body: {
+         "name" : `${name}`,
+         "image"  : `${url}`
+        }
+    }
+    fetch('http://localhost:3000/pops', options)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
     })
 }

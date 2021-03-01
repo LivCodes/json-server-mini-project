@@ -30,35 +30,45 @@ function addToCollection(e) {
     e.preventDefault();
     // user inputs name and url 
     // submit event adds new pop to "pops" 
+    
    let name = document.getElementById("name-input").value
    let url = document.getElementById("img-url-input").value
-    let options = {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-         name : name,
-         image  : url,
-         likes : 0
+   fetch(`http://localhost:3000/pops?name=${name}`)
+   .then(res => res.json())
+   .then(data => {
+       if(data[0].length === 0) {
+        let options = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+             name : name,
+             image  : url,
+             likes : 0
+            })
+        }
+        fetch('http://localhost:3000/pops', options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
         })
-    }
-    fetch('http://localhost:3000/pops', options)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-    })
-
-    let div = document.createElement('div');
-    div.className = 'card';
-    div.innerHTML = `<h2>${name}</h2>
-    <img alt="${name}" src="${url}" class="avatar" />
-    <p>0</p>
-    <button class='btn like'>Like</button>
-    <button class="btn">Remove</button>`;
-    deleteFromCollection(div)
-    likeFeat(div);
-    document.querySelector('#collection').append(div);
+    
+        let div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `<h2>${name}</h2>
+        <img alt="${name}" src="${url}" class="avatar" />
+        <p>0</p>
+        <button class='btn like'>Like</button>
+        <button class="btn">Remove</button>`;
+        deleteFromCollection(div)
+        likeFeat(div);
+        document.querySelector('#collection').append(div);
+       } else {
+           console.log("toy already exists!")
+       }
+   })
+   
     e.target.reset();
     
 }
@@ -91,7 +101,10 @@ function likeFeat(card) {
 
     console.log(like, likeCount)
     like.addEventListener('click', function(e) {
-        console.log('clicked')
+       
+        likeCount ++
+        card.children[2].innerText = likeCount
+    
         fetch(`http://localhost:3000/pops?name=${name}`)
         .then(res => res.json())
         .then(data => {
@@ -107,7 +120,7 @@ function likeFeat(card) {
             }
 
             fetch(`http://localhost:3000/pops/${data[0].id}`, options);
-            card.children[2].innerText = likeCount ++
+           
         })
         
     })

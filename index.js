@@ -22,21 +22,33 @@ function fetchStart() {
 }
 
 function addToCollection(e) {
-    e.preventDefault()
+    e.preventDefault();
     // user inputs name and url 
     // submit event adds new pop to "pops" 
    let name = document.getElementById("name-input").value
    let url = document.getElementById("img-url-input").value
     let options = {
         method: "POST",
-        body: {
-         "name" : `${name}`,
-         "image"  : `${url}`
-        }
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+         name : name,
+         image  : url
+        })
     }
     fetch('http://localhost:3000/pops', options)
     .then(response => response.json())
     .then(data => {
         console.log(data)
     })
+
+    let div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = `<h2>${name}</h2>
+    <img alt="${name}" src="${url}" class="avatar" />
+    <button class="btn">Remove</button>`;
+
+    document.querySelector('#collection').append(div);
+    
 }

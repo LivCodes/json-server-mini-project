@@ -36,7 +36,7 @@ function addToCollection(e) {
    fetch(`http://localhost:3000/pops?name=${name}`)
    .then(res => res.json())
    .then(data => {
-       if(data[0].length === 0) {
+       if(data[0] === undefined) {
         let options = {
             method: "POST",
             headers: {

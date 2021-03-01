@@ -4,31 +4,31 @@
       "id": 1,
       "name": "Spider-man Gauntlet",
       "image": "https://images-na.ssl-images-amazon.com/images/I/41NqvNnvYrL._AC_US40_.jpg",
-      "likes": 0
-    },
-    {
-      "id": 2,
-      "name": "Scary Terry",
-      "image": "https://images-na.ssl-images-amazon.com/images/I/61jvCRhSnnL._AC_SX679_.jpg",
-      "likes": 5
+      "likes": 7
     },
     {
       "id": 3,
       "name": "Charmander",
       "image": "https://bbts1.azureedge.net/images/p/full/2019/04/80edb490-1750-44e8-b515-daf1f8d12e40.jpg",
-      "likes": 1
+      "likes": 9
     },
     {
       "id": 4,
       "name": "Deadpool",
       "image": "https://images-na.ssl-images-amazon.com/images/I/61W6YssxEIL._AC_SX679_.jpg",
-      "likes": 1
+      "likes": 4
     },
     {
       "name": "hankey",
       "image": "https://images-na.ssl-images-amazon.com/images/I/61L7ve7mr4L._AC_SX679_.jpg",
-      "likes": 6,
+      "likes": 9,
       "id": 6
+    },
+    {
+      "name": "IT",
+      "image": "https://cconnect.s3.amazonaws.com/wp-content/uploads/2020/07/Ultimate-Funko-Pop-It-Movie-Figures-Guide-950-thumb.jpg",
+      "likes": 0,
+      "id": 7
     }
   ]
 }

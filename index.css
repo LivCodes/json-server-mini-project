@@ -1,12 +1,13 @@
 body {
   margin: 0;
   font-family: monospace;
+  background-image: linear-gradient(to bottom right, grey, #025958);
 }
 
 #header {
   display: flex;
   justify-content: center;
-  background: #515DA2;
+  background: #025958;
   opacity: .8;
   height: 7rem;
   padding: 1rem;
@@ -29,7 +30,8 @@ body {
   height: 25rem;
   display: inline-grid;
   margin: 1rem 2rem;
-  box-shadow: 3px 4px #e04b52
+  box-shadow: 3px 4px #e04b52;
+  background-color: white;
 }
 
 .avatar {
@@ -60,7 +62,7 @@ button:hover {
   padding: 1rem;
   width: stretch;
   height: auto;
-  background: #515DA2;
+  background: #025958;
   opacity: .8;
 }
 

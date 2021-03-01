@@ -14,10 +14,13 @@ function fetchStart() {
             div.className = 'card';
             div.innerHTML = `<h2>${pop.name}</h2>
             <img alt="${pop.name}" src="${pop.image}" class="avatar" />
+            <p>${pop.likes}</p>
+            <button class='btn like'>Like</button>
             <button class="btn">Remove</button>`;
 
             document.querySelector('#collection').append(div);
             deleteFromCollection(div)
+            likeFeat(div);
         })
         
     })
@@ -36,7 +39,8 @@ function addToCollection(e) {
         },
         body: JSON.stringify({
          name : name,
-         image  : url
+         image  : url,
+         likes : 0
         })
     }
     fetch('http://localhost:3000/pops', options)
@@ -49,14 +53,18 @@ function addToCollection(e) {
     div.className = 'card';
     div.innerHTML = `<h2>${name}</h2>
     <img alt="${name}" src="${url}" class="avatar" />
+    <p>0</p>
+    <button class='btn like'>Like</button>
     <button class="btn">Remove</button>`;
     deleteFromCollection(div)
+    likeFeat(div);
     document.querySelector('#collection').append(div);
+    e.target.reset();
     
 }
 
 function deleteFromCollection(card) {
-    let btn = card.children[2]
+    let btn = card.children[4]
     let name = card.children[0].innerText
 
     btn.addEventListener("click", () => {
@@ -73,5 +81,34 @@ function deleteFromCollection(card) {
             fetch(`http://localhost:3000/pops/${data[0].id}`, options)
         })
         card.remove()
+    })
+}
+
+function likeFeat(card) {
+    let like = card.children[3];
+    let likeCount = parseInt(card.children[2].innerText);
+    const name = card.children[0].innerText;
+
+    console.log(like, likeCount)
+    like.addEventListener('click', function(e) {
+        console.log('clicked')
+        fetch(`http://localhost:3000/pops?name=${name}`)
+        .then(res => res.json())
+        .then(data => {
+            let options = {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify
+                ({
+                    likes: parseInt(card.children[2].innerText)
+                })
+            }
+
+            fetch(`http://localhost:3000/pops/${data[0].id}`, options);
+            card.children[2].innerText = likeCount ++
+        })
+        
     })
 }
